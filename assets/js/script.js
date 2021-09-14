@@ -40,24 +40,26 @@ function generatePassword(length,lower,upper,number,special){
 function writePassword() {
   
   var lengthCriteria = prompt("Please choose the length of password\n (Must be at least 8 characters and no more than 128 characters)", "8");
-  if (lengthCriteria === null){
-    alert("Your must choose at least 8 characters and no more than 128 characters"); 
+
+  if (lengthCriteria === null || lengthCriteria < 8 || lengthCriteria > 128){
+    console.log("Password length selected does not meet the requirement")
+    alert("You must choose at least 8 characters and no more than 128 characters"); 
     writePassword()
   }
+  console.log("Length chosen is " + lengthCriteria)
   var numCriteria = confirm("Do you want to include at least one number?");
   var lowerCriteria = confirm("Do you want to include at least one lowercase?");
   var upperCriteria = confirm("Do you want to include at least one uppercase?");
   var specialCriteria = confirm("Do you want to include at least one special character (e.g., ! @ # ? ]) ?");
   if (numCriteria === false && lowerCriteria === false && upperCriteria === false && specialCriteria === false){
     alert("Your must select at least one character type"); 
-    writePassword()
+    return;
   } else if (lengthCriteria !== null && (numCriteria === true || lowerCriteria === true || upperCriteria === true || specialCriteria === true)){
-    console.log('elseif')
+    console.log('Meeting character selection criteria')
     var password = generatePassword(lengthCriteria,lowerCriteria,upperCriteria,numCriteria,specialCriteria);
-    console.log(password)
     var passwordText = document.querySelector("#password");
     passwordText.value = password;
-    passwordText.setAttribute("style","font-size:50px; padding-top:50px; padding-bottom:40px")
+    passwordText.setAttribute("style","font-size:30px")
   }
 }
 
