@@ -59,7 +59,7 @@ function writePassword() {
   if (lengthCriteria === null || lengthCriteria < 8 || lengthCriteria > 128){
     console.log("Password length selected does not meet the requirement")
     alert("You must choose at least 8 characters and no more than 128 characters"); 
-    writePassword()
+    var lengthCriteria = prompt("Please choose the length of password\n (Must be at least 8 characters and no more than 128 characters)", "8");
   }
   console.log("Length chosen is " + lengthCriteria)
   // prompting user to confirm whether to include at least one number
